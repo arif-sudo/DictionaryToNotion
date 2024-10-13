@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from notion_client import Client
 
 # Initialize Notion client
-notion = Client(auth='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')
+notion = Client(auth='NOTION_INTEGRATION_KEY')
 
 def fetch_definition_and_example(word):
     url = f"https://dictionary.cambridge.org/dictionary/english/{word}"
@@ -28,7 +28,7 @@ def fetch_definition_and_example(word):
 def add_to_notion(word, definition, example, tag):
     try:
         notion.pages.create(
-            parent={"database_id": "438f6bd9fdea406cbcf428570a0e07b1"},
+            parent={"database_id": "NOTION_DATABASE_ID"},
             properties={
                 "Word": {"title": [{"text": {"content": word}}]},
                 "Definition": {"rich_text": [{"text": {"content": definition}}]},
